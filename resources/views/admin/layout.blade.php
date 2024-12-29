@@ -41,8 +41,7 @@
 
     <script src='{{asset('admin/js/uppy.min.js')}}'></script>
     <script src='{{asset('admin/js/quill.min.js')}}'></script>
-
-    @livewireStyles
+        @livewireStyles
 </head>
 
 
@@ -51,13 +50,10 @@
 @include('admin.partials.navbar')
 @include('admin.partials.sidebar')
 <main role="main" class="main-content">
-    @yield('content')
+    {{ $slot }}
 </main>
 
-
 <script src="{{asset('admin/js/apps.js')}}"></script>
-
-
 @livewireScripts
 
 </body>

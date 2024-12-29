@@ -22,7 +22,7 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="{{route('home')}}">ورود به سایت</a>
+                <a class="dropdown-item" href="">ورود به سایت</a>
             </div>
         </li>
     </ul>
