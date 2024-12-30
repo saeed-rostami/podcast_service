@@ -1,5 +1,7 @@
 {
-    "php" : "8.2",
+    "laravel": {
+        "phpVersion": "8.2"
+    },
     "build":{
         "location":"iran"
     }
