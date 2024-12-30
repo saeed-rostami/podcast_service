@@ -17,14 +17,12 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('categories');
 
-            $table->foreignId('type_id')
-                ->constrained('types');
 
             $table->string('title')->unique();
             $table->string('cover');
             $table->text('description')->nullable();
             $table->string('slug')->nullable()->unique();
-            $table->tinyInteger('type')->default(0)->comment('0-webinar');
+            $table->tinyInteger('type')->default(1)->comment('1-podcast');
             $table->softDeletes();
             $table->timestamps();
         });

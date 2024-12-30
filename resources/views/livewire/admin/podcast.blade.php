@@ -6,19 +6,19 @@
         <div class="col-12">
             <div class="row align-items-center my-4">
                 <div class="col">
-                    <h2 class="h3 mb-0 page-title">مدیریت دسته بندی</h2>
+                    <h2 class="h3 mb-0 page-title">مدیریت پادکست</h2>
                 </div>
 
                 <div class="col-auto">
                     <input
                         wire:model.live.debounce.500ms="search"
-                        placeholder="نام دسته بندی.."
+                        placeholder="نام پادکست.."
                         class="form-control"
                         type="text">
                 </div>
 
                 <div class="col-auto">
-                    <a wire:navigate href="{{ route('admin.category.create') }}" type="button" class="btn btn-primary"><span class="fe fe-plus-circle fe-12 mr-2"></span>ایجاد دسته بندی جدید</a>
+                    <a wire:navigate href="{{ route('admin.podcast.create') }}" type="button" class="btn btn-primary"><span class="fe fe-plus-circle fe-12 mr-2"></span>ایجاد پادکست جدید</a>
                 </div>
             </div>
 
@@ -31,32 +31,57 @@
             </div>
 
             <!-- table -->
-            <div  class="card shadow">
+            <div wire:loading.remove class="card shadow">
                 <div class="card-body">
                     <table class="table table-borderless table-hover">
                         <thead>
                         <tr>
                             <th>شناسه</th>
                             <th>نام</th>
-                            <th>تاریخ ایجاد</th>
+                            <th>توضیحات</th>
+                            <th>تعداد اپیزود</th>
 
+                            <th>کاور</th>
+                            <th>دسته بندی</th>
+                            <th>تاریخ ایجاد</th>
                             <th>عملیات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
+                        @foreach($podcasts as $podcast)
                             <tr>
-                                <td>{{ $category->id }}</td>
+                                <td>
+                                    {{ $podcast->id }}
+                                </td>
                                 <td>
                                     <p class="mb-0 text-muted">
-                                        <strong>{{$category->title}}</strong>
+                                        <strong>{{$podcast->title}}</strong>
                                     </p>
 
                                 </td>
 
-                                <td class="text-muted">{{verta($category->created_at)->format('%Y, %B %d')}}</td>
+                                <td>
+                                    <p class="mb-0 text-muted">
+                                        {{\Illuminate\Support\Str::limit($podcast->description, 30)}}
+                                    </p>
+
+                                </td>
+
+                                <td>
+                                    {{ $podcast->episodes->count() }}
+                                </td>
+
+                                <td>
+                                    <img
+                                        style="width: 100px; height: 100px"
+                                        src="{{ asset('storage/' . $podcast->cover) }}" alt="">
+                                </td>
 
 
+                                <td>
+                                    {{ $podcast->category->title }}
+                                </td>
+                                <td class="text-muted">{{verta($podcast->created_at)->format('%Y, %B %d')}}</td>
 
                                 <td>
                                     <button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
@@ -64,14 +89,11 @@
                                         <span class="text-muted sr-only">Action</span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a wire:navigate class="dropdown-item" href="{{ route('admin.category.update' , $category) }}">ویرایش</a>
-
+                                        <a wire:navigate class="dropdown-item" href="{{ route('admin.podcast.update', $podcast) }}">ویرایش</a>
                                         <button
-                                            wire:click="delete( {{ $category->id }})"
+                                            wire:click="delete({{ $podcast }})"
                                             wire:confirm="آیا مطمنی از پاک کردن؟"
                                             class="btn btn-sm dropdown-item" >حذف</button>
-
-
                                     </div>
                                 </td>
                             </tr>
@@ -82,7 +104,7 @@
                 </div>
             </div>
         </div> <!-- .col-12 -->
-        {{$categories->links()}}
+        {{$podcasts->links()}}
 
     </div> <!-- .row -->
 
