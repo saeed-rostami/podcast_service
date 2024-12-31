@@ -26,7 +26,7 @@ class CategoryUpdate extends Component
         ]);
 //
         if ($this->cover) {
-            $path = $this->cover->store('images/podcast' , 'public');
+            $path = $this->cover->store('images/category' , 'public');
         }
 
         $this->category

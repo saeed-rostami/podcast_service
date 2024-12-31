@@ -14,8 +14,9 @@ class PodcastCreate extends Component
     #[Validate(['required' , 'string' , 'unique:categories,title' , 'max:32' , 'min:3'])]
     public string $title;
 
-    #[Validate(['required' , 'string' , 'unique:categories,title' , 'max:1024' , 'min:8'])]
+    #[Validate(['required' , 'string' , 'max:1024' , 'min:8'])]
     public string $description;
+
     #[Validate(['required', 'exists:categories,id'])]
     public int $category_id;
 

@@ -26,7 +26,7 @@ Route::prefix('panel')
         Route::prefix('podcast')->group(function () {
             Route::get('/', \App\Livewire\Admin\Podcast::class)->name('admin.podcast.index');
             Route::get('/create', \App\Livewire\Admin\PodcastCreate::class)->name('admin.podcast.create');
-            Route::get('/update/{podcast}', \App\Livewire\Admin\CategoryUpdate::class)->name('admin.podcast.update');
+            Route::get('/update/{podcast}', \App\Livewire\Admin\PodcastUpdate::class)->name('admin.podcast.update');
         });
 
         //    USERS
