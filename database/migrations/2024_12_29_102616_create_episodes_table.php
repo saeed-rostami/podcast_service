@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('cover')->nullable();
             $table->text('description')->nullable();
             $table->string('slug')->nullable()->unique();
-            $table->string('file_path');
             $table->softDeletes();
             $table->timestamps();
         });

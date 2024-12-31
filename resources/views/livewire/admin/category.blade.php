@@ -38,6 +38,8 @@
                         <tr>
                             <th>شناسه</th>
                             <th>نام</th>
+                            <th>کاور</th>
+
                             <th>تاریخ ایجاد</th>
 
                             <th>عملیات</th>
@@ -51,6 +53,18 @@
                                     <p class="mb-0 text-muted">
                                         <strong>{{$category->title}}</strong>
                                     </p>
+
+                                </td>
+
+                                <td>
+                                    @if($category->cover)
+                                        <img
+                                            style="width: 100px; height: 100px"
+                                            src="{{ asset('storage/' . $category?->cover) }}" alt="">
+
+                                    @else
+                                        بدون کاور
+                                    @endif
 
                                 </td>
 

@@ -54,6 +54,20 @@
                                         @enderror
 
                                     </div>
+
+                                    <div class="col-md-2 mb-3">
+                                        <label for="description">نوع دسترسی</label>
+
+                                        <select wire:model="access_level" class="form-control">
+                                            @foreach(\App\Models\Podcast::ACCESS_LEVELS as $item => $value)
+                                                <option value="{{$value}}"> {{$item}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('access_level')
+                                        <div class="text-danger"> {{ $message }} </div>
+                                        @enderror
+
+                                    </div>
                                 </div>
 
 

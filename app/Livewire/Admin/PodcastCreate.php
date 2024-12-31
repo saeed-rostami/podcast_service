@@ -19,6 +19,9 @@ class PodcastCreate extends Component
     #[Validate(['required', 'exists:categories,id'])]
     public int $category_id;
 
+    #[Validate(['required', 'in:1,2,3'])]
+    public $access_level;
+
     #[Validate(['required', 'file'])]
     public $cover;
 
@@ -34,6 +37,7 @@ class PodcastCreate extends Component
             ->create(
                 [
                     'title' => $this->title,
+                    'access_level' => $this->access_level,
                     'description' => $this->description,
                     'category_id' => $this->category_id,
                     'cover' => $path,

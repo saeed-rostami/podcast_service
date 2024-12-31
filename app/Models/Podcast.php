@@ -15,6 +15,13 @@ class Podcast extends Model
     protected $table = 'podcasts';
     protected $guarded = ['id'];
 
+    const ACCESS_LEVELS = ['PUBLIC' => 1 , 'PRIVATE' => 2, 'VIP' => 3];
+
+    public static function getAccessLevelKey($value) {
+        $key = array_search($value, self::ACCESS_LEVELS);
+        return $key !== false ? $key : null; // Return null if not found
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');

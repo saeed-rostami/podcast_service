@@ -38,9 +38,9 @@
                         <tr>
                             <th>شناسه</th>
                             <th>نام</th>
+                            <th>نوع دسترسی</th>
                             <th>توضیحات</th>
                             <th>تعداد اپیزود</th>
-
                             <th>کاور</th>
                             <th>دسته بندی</th>
                             <th>تاریخ ایجاد</th>
@@ -58,6 +58,12 @@
                                         <strong>{{$podcast->title}}</strong>
                                     </p>
 
+                                </td>
+
+                                <td>
+                                  <span class="badge badge-{{ $podcast->access_level == 1 ? 'success' : ($podcast->access_level == 2 ? 'warning' : 'danger') }}">
+                                        {{\App\Models\Podcast::getAccessLevelKey($podcast->access_level)}}
+                                  </span>
                                 </td>
 
                                 <td>

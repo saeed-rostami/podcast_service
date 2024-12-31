@@ -16,13 +16,12 @@ return new class extends Migration
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained('categories');
-
-
             $table->string('title')->unique();
             $table->string('cover');
             $table->text('description')->nullable();
             $table->string('slug')->nullable()->unique();
-            $table->tinyInteger('type')->default(1)->comment('1-podcast');
+            $table->tinyInteger('application_type')->default(1)->comment('1-podcast');
+            $table->tinyInteger('access_level')->default(1)->comment('1-public, 2 private, 3 VIP');
             $table->softDeletes();
             $table->timestamps();
         });

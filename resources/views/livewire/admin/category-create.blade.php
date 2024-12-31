@@ -24,7 +24,26 @@
                                     </div>
                                     </div>
 
-                                <button class="btn btn-primary" type="submit">بساز !</button>
+{{--                              <div class="form-row">--}}
+                                  <div class="custom-file mb-3 col-md-3">
+                                      <input wire:model="cover" name="cover" type="file" class="custom-file-input"
+                                             id="cover" required>
+                                      <label class="custom-file-label" for="validatedCustomFile">Choose
+                                          file...</label>
+
+                                      @if($cover)
+                                          <img style="width: 100px; height: 100px" src="{{ $cover->temporaryUrl() }}" alt="">
+                                      @endif
+
+                                      @error('cover')
+                                      <div class="text-danger"> {{ $message }} </div>
+                                      @enderror
+                                  </div>
+{{--                              </div>--}}
+
+                                <div class="mt-5">
+                                    <button class="btn btn-primary" type="submit">بساز !</button>
+                                </div>
                             </form>
                         </div> <!-- /.card-body -->
                     </div> <!-- /.card -->
