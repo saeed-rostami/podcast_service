@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('otps', function (Blueprint $table) {
             $table->id();
-            $table->morphs( 'user' );
+            $table->unsignedInteger( 'user_id' );
             $table->string( 'mobile' , 15 )->nullable();
             $table->string( 'email'  )->nullable();
             $table->integer( 'otp' )->nullable();

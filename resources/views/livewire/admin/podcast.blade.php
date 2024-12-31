@@ -61,7 +61,7 @@
                                 </td>
 
                                 <td>
-                                  <span class="badge badge-{{ $podcast->access_level == 1 ? 'success' : ($podcast->access_level == 2 ? 'warning' : 'danger') }}">
+                                  <span class="p-2 badge badge-{{ $podcast->access_level == 1 ? 'success' : ($podcast->access_level == 2 ? 'warning' : 'danger') }}">
                                         {{\App\Models\Podcast::getAccessLevelKey($podcast->access_level)}}
                                   </span>
                                 </td>

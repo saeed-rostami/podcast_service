@@ -13,12 +13,7 @@ return new class extends Migration
     {
         Schema::create('followed_podcasts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")
-                ->references("id")
-                ->on("users")
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-
+            $table->unsignedInteger( 'user_id' );
             $table->foreignId("podcast_id")
                 ->references("id")
                 ->on("podcasts")
